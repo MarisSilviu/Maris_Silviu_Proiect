@@ -1,0 +1,43 @@
+﻿@page
+@model Maris_Silviu_Proiect.Pages.Medici.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align:center">Lista medici</h1>
+<p style="text-align:center">
+    <a asp-page="Create">Adauga un medic</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medic[0].MedicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medic[0].MedicSpecializare)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Medic)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicSpecializare)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
